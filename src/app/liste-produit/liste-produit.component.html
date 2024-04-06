@@ -1,0 +1,41 @@
+<h1 style="text-align: center; margin: 10px 0; color: red;">Ajout d'un produit</h1>
+<form action="" class="m-3">
+    <div class="container">
+        <div class="form-group mb-4">
+            <label for="" class="mb-2">Id:</label>
+            <input type="text" name="id" id="" class="form-control" [(ngModel)]="produit.id">
+        </div>
+    
+        <div class="form-group mb-4">
+            <label for="" class="mb-2">titre:</label>
+            <input type="text" name="title" id="" class="form-control" [(ngModel)]="produit.title">
+        </div>
+    
+        <div class="form-group mb-4">
+            <label for="" class="mb-2">prix:</label>
+            <input type="text" name="prix" id="" class="form-control" [(ngModel)]="produit.price">
+        </div>
+        <div class="form-group mb-4">
+            <label for="" class="mb-2">Quantité:</label>
+            <input type="text" name="prix" id="" class="form-control" [(ngModel)]="produit.quantite">
+        </div>
+    
+        <button type="submit" class="btn btn-primary" (click)="save()">Ajouter</button>
+    </div>
+
+</form>
+
+
+<div class="row h-300 justify-conternt-center align-items-center products">
+    <div *ngFor="let pr of listeProduit">
+        <div class="col-md-3">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="./../../assets/2148634082.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">prix:{{pr.price}}$ | quantité:{{pr.quantite}} </h5>
+                    <button class="btn btn-primary">Like</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
