@@ -1,5 +1,5 @@
 <h1 style="text-align: center; margin: 10px 0; color: red;">Ajout d'un produit</h1>
-<form action="" class="m-3">
+<form action="" class="m-3" id="form">
     <div class="container">
         <div class="form-group mb-4">
             <label for="" class="mb-2">Id:</label>
@@ -21,10 +21,25 @@
         </div>
     
         <button type="submit" class="btn btn-primary" (click)="save()">Ajouter</button>
+        <button class="btn btn-warning m-3" (click)="updateProduct(produit)">Update</button>
+
     </div>
 
 </form>
 
 
-
-
+<div class="row h-300 justify-conternt-center align-items-center products">
+    <div *ngFor="let pr of listeProduit">
+        <div class="col-md-3">
+            <div class="card mb-3" style="width: 25rem;">
+                <img src="./../../assets/img11.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">prix:{{pr.price}}$ | quantité:{{pr.quantite}} </h5>
+                    <button class="btn btn-primary m-3">Like</button>
+                    <button class="btn btn-warning m-3" (click)="getProd(pr)"><a href="#form">Update</a></button>
+                    <button class="btn btn-danger  m-3" (click)="deletePoduct(pr.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

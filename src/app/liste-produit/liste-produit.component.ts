@@ -8,7 +8,7 @@ import { ProduitService } from '../services/produit.service';
   styleUrls: ['./liste-produit.component.css']
 })
 export class ListeProduitComponent {
-  listeProduit:any;
+  listeProduit!:produit[];
   produit!:produit;
   constructor(private serviceProduit:ProduitService){
 
@@ -18,9 +18,12 @@ export class ListeProduitComponent {
     this.produit.like=0;
     this.serviceProduit.getProduit()
       .subscribe(
-        (data)=>{
+        (data:produit[])=>{
           this.listeProduit=data;
           console.log(this.listeProduit)
+        },
+        err=>{
+          console.log(err)
         }
        
       )
@@ -32,6 +35,28 @@ export class ListeProduitComponent {
         ()=>{
           this.listeProduit=[this.produit,...this.listeProduit];
           this.ngOnInit();
+        }
+      )
+  }
+  deletePoduct(id:any){
+    this.serviceProduit.deleteById(id)
+      .subscribe(
+        res=>{
+          console.log(res);
+          this.ngOnInit();
+        }
+      )
+  }
+  getProd(product:any){
+    this.produit=product;
+    console.log(this.produit)
+  }
+  updateProduct(product:any){
+    this.serviceProduit.updateById(product.id,product)
+      .subscribe(
+        res=>{
+          console.log(res);
+          
         }
       )
   }
